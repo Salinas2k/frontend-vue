@@ -1,27 +1,32 @@
-import axios from "axios";
-import Cookies from "js-cookie";
+import axios from 'axios';
 
-const ENDPOINT_PATH = "localhost:8080/api/v1/";
+const ENDPOINT_PATH = "http://localhost:8080/api/v1/";
 
 export default {
-  setUserLogged(userLogged) {
-    Cookies.set("userLogged", userLogged);
-  },
-  getUserLogged() {
-    return Cookies.get("userLogged");
-  },
   register(user, password) {
-    //const data = { user, password };
-    return axios.post(ENDPOINT_PATH + "regiser", {
-      "user": user,
-      "password": password
-    });
+    let data = {};
+    data.username = user;
+    data.password = password;
+    return axios.post(ENDPOINT_PATH + "regiser", data);
   },
+
   login(user, password) {
-    //const data = { user, password };
-    return axios.get(ENDPOINT_PATH + "login", {
-      "user": user,
-      "password": password
+    let data = {};
+    data.username = user;
+    data.password = password;
+    return axios.post(ENDPOINT_PATH + "login", data)
+    .then ((response) => {
+      console.log(response.status);
+      console.log(response.headers);
+      return response;
+    })
+    .catch((error) => {
+      console.log("error");
+      console.log(error);
+    })
+    .then(() => {
+      console.log();
     });
+    
   }
 };

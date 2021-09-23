@@ -4,7 +4,7 @@
     <form action class="form" @submit.prevent="login">
       <label class="form-label" for="#user">User:</label>
       <input
-        v-model="message"
+        v-model="user"
         class="form-input"
         type="user"
         id="user"
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import auth from "@/logic/auth";
+import auth from "../logic/auth";
 export default {
   data: () => ({
     user: "",
@@ -39,13 +39,9 @@ export default {
   methods: {
     async login() {
       try {
-        await auth.login(this.user, this.password);
-        const user = {
-          user: this.user
-        };
-        auth.setUserLogged(user);
-        this.$router.push("/");
+        auth.login(this.user, this.password);
       } catch (error) {
+        console.log("error en login.vue");
         console.log(error);
         this.error = true;
       }
