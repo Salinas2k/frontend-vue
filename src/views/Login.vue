@@ -10,7 +10,7 @@
         id="user"
         required
         placeholder="User"
-      >
+      />
       <label class="form-label" for="#password">Password:</label>
       <input
         v-model="password"
@@ -18,11 +18,12 @@
         type="password"
         id="password"
         placeholder="Password"
-      >
+      />
       <p v-if="error" class="error">Usuario o la contraseña incorrectas.</p>
-      <input class="form-submit" type="submit" value="Login">
+      <input class="form-submit" type="submit" value="Login" />
     </form>
-    <p class="msg">¿No tienes cuenta?
+    <p class="msg">
+      ¿No tienes cuenta?
       <router-link to="/register">Regístrate</router-link>
     </p>
   </div>
@@ -34,19 +35,19 @@ export default {
   data: () => ({
     user: "",
     password: "",
-    error: false
+    error: false,
   }),
   methods: {
     async login() {
       try {
-        auth.login(this.user, this.password);
+        return await auth.login(this.user, this.password);
       } catch (error) {
         console.log("error en login.vue");
         console.log(error);
         this.error = true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -11,14 +11,23 @@ export default {
   },
 
   login(user, password) {
-    let data = {};
-    data.username = user;
-    data.password = password;
-    return axios.post(ENDPOINT_PATH + "login", data)
-    .then ((response) => {
-      console.log(response.status);
-      console.log(response.headers);
-      return response;
+    var data = JSON.stringify({
+      "username": user,
+      "password": password
+    });
+
+    var config = {
+      method: 'get',
+      url: ENDPOINT_PATH + "login",
+      headers: { 
+        'Content-Type': 'application/json'
+      },
+      data : data
+    };
+
+    return axios(config)
+    .then (response => {
+      console.log(JSON.stringify(response.data));
     })
     .catch((error) => {
       console.log("error");
@@ -27,6 +36,5 @@ export default {
     .then(() => {
       console.log();
     });
-    
   }
 };
