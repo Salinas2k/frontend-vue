@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import auth from "../logic/auth";
+import axios from "axios";
 export default {
   data: () => ({
     user: "",
@@ -39,13 +39,22 @@ export default {
   }),
   methods: {
     async login() {
-      try {
-        return await auth.login(this.user, this.password);
-      } catch (error) {
-        console.log("error en login.vue");
-        console.log(error);
-        this.error = true;
-      }
+      var data = {
+        username: this.user,
+        password: this.password,
+      };
+      axios
+        .post("login", data)
+        .then((response) => {
+          console.log(JSON.stringify(response));
+        })
+        .catch((error) => {
+          console.log("error");
+          console.log(error);
+        })
+        .then(() => {
+          console.log();
+        });
     },
   },
 };

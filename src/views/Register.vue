@@ -10,7 +10,7 @@
         id="email"
         required
         placeholder="Email"
-      >
+      />
       <label class="form-label" for="#password">Password:</label>
       <input
         v-model="password"
@@ -18,34 +18,39 @@
         type="password"
         id="password"
         placeholder="Password"
+      />
+      <label class="form-label" for="#password-repeat"
+        >Repite la contraeña:</label
       >
-      <label class="form-label" for="#password-repeat">Repite la contraeña:</label>
       <input
         v-model="passwordRepeat"
         class="form-input"
         type="password"
         id="password-repeat"
         placeholder="Password"
-      >
-      <input class="form-submit" type="submit" value="Sign Up">
+      />
+      <input class="form-submit" type="submit" value="Sign Up" />
     </form>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data: () => ({
+    user: "",
     email: "",
     password: "",
-    passwordRepeat: ""
+    passwordRepeat: "",
   }),
   methods: {
     register() {
-      console.log(this.email);
-      console.log(this.password);
-      console.log(this.passwordRepeat);
-    }
-  }
+      let data = {};
+      data.username = this.user;
+      data.password = this.password;
+      return axios.post("register", data);
+    },
+  },
 };
 </script>
 
