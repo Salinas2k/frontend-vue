@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   data: () => ({
     user: "",
@@ -44,12 +43,7 @@ export default {
     passwordRepeat: "",
   }),
   methods: {
-    register() {
-      let data = {};
-      data.username = this.user;
-      data.password = this.password;
-      return axios.post("register", data);
-    },
+    register() {},
   },
 };
 </script>

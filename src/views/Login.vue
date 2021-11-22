@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import { LoginService } from "@/common/api.service";
 export default {
   data: () => ({
     user: "",
@@ -38,22 +38,17 @@ export default {
     error: false,
   }),
   methods: {
-    async login() {
+    login() {
       var data = {
         username: this.user,
         password: this.password,
       };
-      axios
-        .post("login", data)
+      LoginService.login(data)
         .then((response) => {
-          console.log(JSON.stringify(response));
+          console.log(response);
         })
         .catch((error) => {
-          console.log("error");
-          console.log(error);
-        })
-        .then(() => {
-          console.log();
+          throw new Error(error);
         });
     },
   },
