@@ -45,7 +45,7 @@ export default {
       };
       LoginService.login(data)
         .then((response) => {
-          console.log(response);
+          console.log(response.common);
         })
         .catch((error) => {
           throw new Error(error);
