@@ -31,6 +31,7 @@
 
 <script>
 import { LoginService } from "@/common/api.service";
+import jwt from "@/common/jwt.service"
 export default {
   data: () => ({
     user: "",
@@ -45,7 +46,8 @@ export default {
       };
       LoginService.login(data)
         .then((response) => {
-          console.log(response.common);
+          jwt.saveToken(JSON.stringify(response.data).split("\"")[3]);
+          this.$router.push("/dashboard");
         })
         .catch((error) => {
           throw new Error(error);
