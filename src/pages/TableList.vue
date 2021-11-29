@@ -9,8 +9,8 @@
           </div>
         </card>
       </div>
-<!--
-      <div class="col-12">
+
+      <!--<div class="col-6">
         <card class="card-plain">
           <div class="table-full-width table-responsive">
             <paper-table type="hover" :title="table2.title" :sub-title="table2.subTitle" :data="table2.data"
@@ -71,8 +71,8 @@ export default {
   data() {
     return {
       table1: {
-        title: "Stripped Table",
-        subTitle: "Here is a subtitle for this table",
+        title: "Clientes",
+        subTitle: "Personas diabéticas, un mundo mejor",
         columns: [...tableColumns],
         data: [...tableData]
       },

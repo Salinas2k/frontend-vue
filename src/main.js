@@ -1,14 +1,13 @@
-import Vue from 'vue'
-import router from './router'
+import Vue from "vue";
+import App from "./App";
+import router from "./router/index";
 
-import App from "./App.vue";
+import PaperDashboard from "./plugins/paperDashboard";
+import "vue-notifyjs/themes/default.css";
 
-import Apiservice from './common/api.service'
+Vue.use(PaperDashboard);
 
-Vue.config.productionTip = false;
-
-Apiservice.init();
-
+/* eslint-disable no-new */
 new Vue({
   router,
   render: h => h(App)
