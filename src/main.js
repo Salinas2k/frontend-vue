@@ -1,14 +1,18 @@
-import Vue from "vue";
-import App from "./App";
-import router from "./router/index";
+import Vue from 'vue'
+import App from './App.vue'
 
-import PaperDashboard from "./plugins/paperDashboard";
-import "vue-notifyjs/themes/default.css";
+import ApiService from './common/api.service.js'
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 
-Vue.use(PaperDashboard);
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-/* eslint-disable no-new */
+Vue.config.productionTip = false
+
+Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
+ApiService.init();
+
 new Vue({
-  router,
-  render: h => h(App)
-}).$mount("#app");
+  render: h => h(App),
+}).$mount('#app')
